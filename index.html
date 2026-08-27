@@ -311,14 +311,14 @@ function bindUI() {
     clearTimeout(deb);
     deb = setTimeout(() => {
       cfg.text = e.target.value || ' ';
-      if (cfg.mode === 'text') buildHeight();
+      buildHeight();
     }, 400);
   });
   $('fontName').addEventListener('input', e => {
     clearTimeout(deb);
     deb = setTimeout(() => {
       cfg.fontName = e.target.value.trim() || 'sans-serif';
-      if (cfg.mode === 'text') buildHeight();
+      buildHeight();
     }, 500);
   });
   $('fontFile').addEventListener('change', e => {
@@ -331,7 +331,7 @@ function bindUI() {
         document.fonts.add(loaded);
         customFont = fname;
         $('fontName').value = f.name;
-        if (cfg.mode === 'text') buildHeight();
+        buildHeight();
       });
     };
     reader.readAsArrayBuffer(f);
@@ -341,12 +341,12 @@ function bindUI() {
     customFont = null;
     $('fontName').value = 'sans-serif';
     cfg.fontName = 'sans-serif';
-    if (cfg.mode === 'text') buildHeight();
+    buildHeight();
   };
   $('fontSize').addEventListener('input', e => {
     cfg.fontSize = +e.target.value;
     $('fontSizeVal').textContent = cfg.fontSize;
-    if (cfg.mode === 'text') buildHeight();
+    buildHeight();
   });
 
   const slider = (id, key, labelId, fmt, rebuild) => {
